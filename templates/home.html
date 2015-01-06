@@ -1,0 +1,10 @@
+<div>
+	<ul><li><a href="#/brands/new">Add Brand</a></li></ul>
+	<label for="brandName"> Brand: 
+		<input id="brandName" type="text" />
+	</label>
+	
+	<ul>
+		<li ng-repeat="brand in brands">{{brand.name}}</li>
+	</ul>	
+</div>
