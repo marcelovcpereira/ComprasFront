@@ -1,28 +1,41 @@
 ComprasApp.controller( 'BrandController' , 
     function BrandController($scope,$http,$route,BrandFactory){
         $scope.brands = BrandFactory.query();
-        $scope.serverMessage = "";
+        $scope.successMessage = "";
+        $scope.errorMessage = "";
 
         $scope.addNewBrand = function() {
+            this.hideMessages();
             var newBrand = new BrandFactory({name: this.brandName});
             newBrand.$save(function(created,status){
                 if (created.$resolved == true ) {
-                    $scope.serverMessage = "New brand added: " + created.name;
+                    $scope.successMessage = "New brand added: " + created.name;
+                    $("#successMessage").show();
                 } else {
-                    $scope.serverMessage = "Error creating brand.";
+                    $scope.errorMessage = "Error creating brand.";
+                    $("#errorMessage").show();
                 }
             },function(result){
                 var status = result.status;
-                $scope.serverMessage = result.data.error + " (" + status + ")";
+                $scope.errorMessage = result.data.error + " (" + status + ")";
+                $("#errorMessage").show();
             });
         }
 
+        $scope.hideMessages = function() {
+            $("#successMessage").hide();
+            $("#errorMessage").hide();
+        }
+
         $scope.deleteBrand = function(brand) {
+            this.hideMessages();
             brand.$delete(function(result){
-                $scope.serverMessage = result.message;
-                $route.reload();
+                $scope.successMessage = result.message;
+                $("#successMessage").show();
+                $scope.brands = BrandFactory.query();
             },function(result){
-                $scope.serverMessage = result.error;
+                $scope.errorMessage = result.error;
+                $("#errorMessage").show();
             });
            
         }

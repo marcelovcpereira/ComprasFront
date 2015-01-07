@@ -4,6 +4,10 @@
 		<input id="brandName" type="text" ng-model="brandName"/>
 	</fieldset>
 	<hr>
+	<!--SERVER MESSAGES-->
+    <div id="successMessage" class="alert alert-success" role="alert" style="display:none;">{{successMessage}}</div>
+    <div id="errorMessage" class="alert alert-danger" role="alert" style="display:none;">{{errorMessage}}</div>
+    <!--SERVER MESSAGES-->
 
 	<fieldset>
 		<legend>Brands</legend>
@@ -16,7 +20,7 @@
 				<tr ng-repeat="brand in brands | filter:brandName">
 					<td>{{brand.name}}</td>
 					<td>
-						<button ng-really-message="Do yo want to delete this brand?" ng-really-click="deleteBrand(brand)">Delete</button>
+						<button ng-really-message="Do you really want to delete {{brand.name}} brand?" ng-really-click="deleteBrand(brand)">Delete</button>
 					</td>
 				</tr>
 		 	</tbody>
