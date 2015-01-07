@@ -7,19 +7,22 @@
     </head>
     <body>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/comprasFront.css">
 
         <!-- NAVBAR -->
-        <nav class="nav navbar-default" ng-controller="NavbarController">
-            <div class="container-fluid">
-                <ul>
-                    <button ng-click="gotoBrands()">Brands</button> 
-                    <button ng-click="gotoAddBrand()">Add Brand</button>                    
-                </ul>
-            </div>
-        </nav>
+        <div class="container">
+            <nav class="nav navbar-default" ng-controller="NavbarController">
+                <div class="container-fluid">
+                    <ul>
+                        <li><a href="" ng-click="gotoBrands()">Brands</a></li> |
+                        <li><a href="" ng-click="gotoAddBrand()">Add Brand</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
         <!-- NAVBAR -->
 
-        <ng-view></ng-view>
+        <div class="container"><ng-view></ng-view></div>
         <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>-->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-route.min.js"></script>

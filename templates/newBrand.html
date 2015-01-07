@@ -1,8 +1,11 @@
 <div>
-	<label for="brandName"> Name:
+	<fieldset>
+		<legend>New Brand</legend>
+		<label for="brandName">Name:</label>
 		<input type="text" id="brandName" ng-model="brandName" />
-	</label>
-	<button ng-click="addNewBrand()">Add</button>
+		<button ng-click="addNewBrand()">Add</button>
+	</fieldset>
 
 	<span>{{serverMessage}}</span>
+	<hr>
 </div>
