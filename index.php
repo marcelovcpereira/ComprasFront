@@ -40,6 +40,7 @@
                         .otherwise({ redirectTo: '/brands' });
                 });
         </script>
+        <script src="directives/ng-really.js"></script>
         <script src="services/brandFactory.js"></script>
         <script src="controllers/brandController.js"></script>
         <script src="controllers/navbarController.js"></script>
