@@ -1,10 +1,20 @@
 <div>
-	<ul><li><a href="#/brands/new">Add Brand</a></li></ul>
-	<label for="brandName"> Brand: 
-		<input id="brandName" type="text" />
+	<label for="brandName"> Search: 
+		<input id="brandName" type="text" ng-model="brandName"/>
 	</label>
-	
-	<ul>
-		<li ng-repeat="brand in brands">{{brand.name}}</li>
-	</ul>	
+
+	<table>
+		<thead>
+			<th>Brand</th>
+			<th>Actions</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="brand in brands | filter:brandName">
+				<td>{{brand.name}}</td>
+				<td>
+					<a href="" ng-click="deleteBrand(brand)">Delete</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </div>

@@ -7,40 +7,25 @@
     </head>
     <body>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+        <!-- NAVBAR -->
+        <nav class="nav navbar-default" ng-controller="NavbarController">
+            <div class="container-fluid">
+                <ul>
+                    <button ng-click="gotoBrands()">Brands</button> 
+                    <button ng-click="gotoAddBrand()">Add Brand</button>                    
+                </ul>
+            </div>
+        </nav>
+        <!-- NAVBAR -->
+
         <ng-view></ng-view>
         <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>-->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-resource.min.js"></script>
         <script>
-                var ComprasApp = angular.module('ComprasApp', ['ngRoute']);
-                ComprasApp.controller("BrandController", function($scope,$http){
-                     $scope.brands = {};
-                     $scope.serverMessage = "";
-                     $http.get("http://localhost/projetos/Compras2/api/v1/brands/json")
-                     .success(function(data,status,headers,config){
-                        $scope.brands = data;
-                     })
-                     .error(function(data,status,headers,config){
-                        $scope.brands = ['Heineken','Stella Artois','Karavelle'];
-                     });
-
-                     $scope.addNewBrand = function() {
-                        var newBrand = {name: this.brandName};
-                        var that = this;
-                        $http.post("http://localhost/projetos/Compras2/api/v1/brands/json",newBrand)
-                        .success(function(data,status){
-                            if ( status == "201" ) {
-                                that.serverMessage = "New brand added: " + data.name;
-                            } else {
-                                that.serverMessage = "Unkown error";
-                            }
-                        })
-                        .error(function(data){
-                            that.serverMessage = "Error creating brand: " + data.error;
-                        });
-                        
-                     }
-                });
+                var ComprasApp = angular.module('ComprasApp', ['ngRoute','ngResource']);
 
                 ComprasApp.config(function($routeProvider){
                     $routeProvider
@@ -50,10 +35,13 @@
                         })
                         .when( '/brands/new' , {
                             controller: 'BrandController',
-                            templateUrl: 'templates/newBrand.html'
+                            templateUrl: 'tepmlates/newBrand.html'
                         })
                         .otherwise({ redirectTo: '/brands' });
                 });
         </script>
+        <script src="services/brandFactory.js"></script>
+        <script src="controllers/brandController.js"></script>
+        <script src="controllers/navbarController.js"></script>
     </body>
 </html>
