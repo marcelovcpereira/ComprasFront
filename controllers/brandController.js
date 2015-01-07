@@ -1,5 +1,5 @@
 ComprasApp.controller( 'BrandController' , 
-    function BrandController($scope,$http,BrandFactory){
+    function BrandController($scope,$http,$route,BrandFactory){
         $scope.brands = BrandFactory.query();
         $scope.serverMessage = "";
 
@@ -19,7 +19,11 @@ ComprasApp.controller( 'BrandController' ,
 
         $scope.deleteBrand = function(brand) {
             brand.$delete(function(result){
-                alert(JSON.stringify(result));
+                $scope.serverMessage = result.message;
+                $route.reload();
+            },function(result){
+                $scope.serverMessage = result.error;
             });
+           
         }
 });

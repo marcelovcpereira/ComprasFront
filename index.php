@@ -35,7 +35,7 @@
                         })
                         .when( '/brands/new' , {
                             controller: 'BrandController',
-                            templateUrl: 'tepmlates/newBrand.html'
+                            templateUrl: 'templates/newBrand.html'
                         })
                         .otherwise({ redirectTo: '/brands' });
                 });
