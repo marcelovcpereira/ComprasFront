@@ -1,8 +1,12 @@
-ComprasApp.controller( 'BrandController' , 
-    function BrandController($scope,$http,$route,BrandFactory){
+ComprasApp.controller( 'BrandController' ,
+    function BrandController($scope,$http,$route,$routeParams,BrandFactory){
         $scope.brands = BrandFactory.query();
         $scope.successMessage = "";
         $scope.errorMessage = "";
+        $scope.editBrandName = "";
+        $scope.brandEdited = BrandFactory.get({id:$routeParams.id},function(){
+            $scope.editBrandName = $scope.brandEdited.name;
+        });
 
         $scope.addNewBrand = function() {
             this.hideMessages();
@@ -27,16 +31,26 @@ ComprasApp.controller( 'BrandController' ,
             $("#errorMessage").hide();
         }
 
-        $scope.deleteBrand = function(brand) {
+        $scope.deleteBrand = function() {
             this.hideMessages();
             brand.$delete(function(result){
                 $scope.successMessage = result.message;
                 $("#successMessage").show();
                 $scope.brands = BrandFactory.query();
-            },function(result){
+            }, function(result){
                 $scope.errorMessage = result.error;
                 $("#errorMessage").show();
             });
-           
+        }
+
+        $scope.updateBrand = function() {
+            $scope.brandEdited.name = $scope.editBrandName;
+            $scope.brandEdited.$update(function(result){
+                $scope.successMessage = JSON.stringify(result);
+                $("#successMessage").show();
+            }, function(result){
+                $scope.errorMessage = JSON.stringify(result);
+                $("#errorMessage").show();
+            });
         }
 });

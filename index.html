@@ -44,6 +44,10 @@
                             controller: 'BrandController',
                             templateUrl: 'templates/newBrand.html'
                         })
+                        .when( '/brands/:brandId/edit' , {
+                            controller: 'BrandController',
+                            templateUrl: 'templates/editBrand.html'
+                        })
                         .otherwise({ redirectTo: '/brands' });
                 });
         </script>
