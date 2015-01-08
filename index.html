@@ -21,6 +21,14 @@
                         <li><a href="" ng-click="gotoAddBrand()">Create</a></li>
                     </ul>
                 </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        Products <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="" ng-click="gotoProducts()">Search</a></li>
+                    </ul>
+                </div>
             </nav>
         </div>
         <!-- NAVBAR -->
@@ -48,12 +56,22 @@
                             controller: 'BrandController',
                             templateUrl: 'templates/editBrand.html'
                         })
+                        .when( '/products' , {
+                            controller: 'ProductController',
+                            templateUrl: 'templates/listProducts.html'
+                        })
+                        .when( '/products/:productId/edit' , {
+                            controller: 'ProductController',
+                            templateUrl: 'templates/editProduct.html'
+                        })
                         .otherwise({ redirectTo: '/brands' });
                 });
         </script>
         <script src="directives/ng-really.js"></script>
         <script src="services/brandFactory.js"></script>
+        <script src="services/productFactory.js"></script>
         <script src="controllers/brandController.js"></script>
+        <script src="controllers/productController.js"></script>
         <script src="controllers/navbarController.js"></script>
     </body>
 </html>

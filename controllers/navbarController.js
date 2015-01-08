@@ -7,5 +7,9 @@ ComprasApp.controller( 'NavbarController' ,
         $scope.gotoAddBrand = function() {
         	$location.path('/brands/new');
         }
+
+        $scope.gotoProducts = function() {
+        	$location.path('/products');
+        }
     }
 );

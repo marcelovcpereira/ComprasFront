@@ -4,7 +4,8 @@ ComprasApp.controller( 'BrandController' ,
         $scope.successMessage = "";
         $scope.errorMessage = "";
         $scope.editBrandName = "";
-        $scope.brandEdited = BrandFactory.get({id:$routeParams.id},function(){
+
+        $scope.brandEdited = BrandFactory.get({id:$routeParams.brandId},function(){
             $scope.editBrandName = $scope.brandEdited.name;
         });
 
@@ -46,7 +47,7 @@ ComprasApp.controller( 'BrandController' ,
         $scope.updateBrand = function() {
             $scope.brandEdited.name = $scope.editBrandName;
             $scope.brandEdited.$update(function(result){
-                $scope.successMessage = JSON.stringify(result);
+                $scope.successMessage = "Brand " + result.id + " updated. (" + result.name + ")";
                 $("#successMessage").show();
             }, function(result){
                 $scope.errorMessage = JSON.stringify(result);
