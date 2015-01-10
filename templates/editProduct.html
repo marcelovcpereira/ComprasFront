@@ -6,10 +6,13 @@
 
         <label for="productDescription">Description:</label><br>
         <input type="text" id="productDescription" ng-model="editProductDescription" /><br><br>
-        
+
         <label for="brands">Brand:</label><br>
-        <select id="brands" ng-options="brand.name for brand in brands" ng-model="selectedBrand"></select>
-    
+        <select id="brands" ng-options="brand.name for brand in brands" ng-model="selectedBrand"></select><br><br>
+
+        <label for="productBarcode">Barcode:</label><br>
+        <input type="text" id="productBarcode" ng-model="editProductBarcode" /><br><br>
+
         <button ng-click="updateProduct()">Save</button>
     </fieldset>
 

@@ -1,0 +1,25 @@
+<div>
+    <fieldset>
+        <legend>New Product</legend>
+        <label for="ProductName">Name:</label>
+        <input type="text" id="ProductName" ng-model="newProductName" /><br><br>
+
+        <label for="ProductDescription">Description:</label>
+        <input type="text" id="ProductDescription" ng-model="newProductDescription" /><br><br>
+
+        <label for="ProductBarcode">Barcode:</label>
+        <input type="text" id="ProductBarcode" ng-model="newProductBarcode" /><br><br>
+
+        <label for="ProductBrand">Brand:</label>
+        <select type="text" id="ProductBrand" ng-model="newProductBrand" ng-options="brand.name for brand in brands" /><br><br>
+
+        <button ng-click="addNewProduct()">Add</button>
+    </fieldset>
+
+    <span>{{serverMessage}}</span>
+    <!--SERVER MESSAGES-->
+    <div id="successMessage" class="alert alert-success" role="alert" style="display:none;">{{successMessage}}</div>
+    <div id="errorMessage" class="alert alert-danger" role="alert" style="display:none;">{{errorMessage}}</div>
+    <!--SERVER MESSAGES-->
+    <hr>
+</div>
