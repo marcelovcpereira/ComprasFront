@@ -38,6 +38,22 @@ ComprasApp.controller( 'ProductController' ,
             });
         }
 
+        $scope.barcodeSearch = function() {
+            var value = $scope.productName;
+            if (isNaN(value)) {
+                alert("Please insert a valid 13 number barcode");
+            } else if (value.toString().length !== 13) {
+                alert("Error: A valid barcode must have 13 numbers");
+            } else {
+                $scope.products = [];
+                $scope.products.push(ProductFactory.get({id:value}));
+            }
+        }
+
+        $scope.clearSearch = function() {
+            $scope.products = ProductFactory.query();
+        }
+
         $scope.hideMessages = function() {
             $("#successMessage").hide();
             $("#errorMessage").hide();

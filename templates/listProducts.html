@@ -1,7 +1,9 @@
 <div>
-	<fieldset>
+	<fieldset class="form-inline">
 		<legend>Search:</legend>
-		<input id="productName" type="text" ng-model="productName"/>
+		<input placeholder="Name or Barcode" class="form-control" id="productName" type="text" ng-model="productName"/>
+		<button class="btn btn-warning" ng-click="barcodeSearch()"><img src="images/barcode.png" alt="barcode icon" width="15px" height="15px"> Barcode Search</button>
+		<button class="btn btn-default" ng-click="clearSearch()">Clear</button>
 	</fieldset>
 	<hr>
 	<!--SERVER MESSAGES-->
@@ -24,8 +26,8 @@
 					<td>{{product.description}}</td>
 					<td>{{product.brand.name}}</td>
 					<td>
-                        <a href="#/products/{{product.id}}/edit">Edit</a> |
-						<a href="" ng-really-message="Do you really want to delete {{product.name}} product?" ng-really-click="deleteProduct(product)">Delete</a>
+                        <a class="btn btn-primary" href="#/products/{{product.id}}/edit">Edit</a>
+						<a class="btn btn-danger" href="" ng-really-message="Do you really want to delete {{product.name}} product?" ng-really-click="deleteProduct(product)">Delete</a>
 					</td>
 				</tr>
 		 	</tbody>

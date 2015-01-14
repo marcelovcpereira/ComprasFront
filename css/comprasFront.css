@@ -28,3 +28,8 @@ left: 0;
 .animate-leave.animate-leave-active, .animate-enter {
 left: 500px;
 }
+
+a.btn {
+	height: 30px;
+	padding: 5px;
+}
