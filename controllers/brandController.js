@@ -32,7 +32,7 @@ ComprasApp.controller( 'BrandController' ,
             $("#errorMessage").hide();
         }
 
-        $scope.deleteBrand = function() {
+        $scope.deleteBrand = function(brand) {
             this.hideMessages();
             brand.$delete(function(result){
                 $scope.successMessage = result.message;

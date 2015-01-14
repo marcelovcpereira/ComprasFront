@@ -11,5 +11,8 @@ ComprasApp.controller( 'NavbarController' ,
         $scope.gotoProducts = function() {
         	$location.path('/products');
         }
+        $scope.gotoNewProduct = function() {
+            $location.path('/products/new');
+        }
     }
 );
